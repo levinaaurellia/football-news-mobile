@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 /// Halaman utama
 class MyHomePage extends StatelessWidget {
-  MyHomePage({super.key}); // constructor tanpa argumen
+  MyHomePage({super.key});
 
   // Data diri
   final String nama  = "Levina Aurellia";
@@ -22,7 +22,10 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           'Football News',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold
+          ),
         ),
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
@@ -40,7 +43,7 @@ class MyHomePage extends StatelessWidget {
                 InfoCard(title: 'Class', content: kelas),
               ],
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 16.0),
             Center(
               child: Column(
                 children: [
@@ -48,7 +51,10 @@ class MyHomePage extends StatelessWidget {
                     padding: EdgeInsets.only(top: 16),
                     child: Text(
                       'Selamat datang di Football News',
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18
+                      ),
                     ),
                   ),
                   // Grid 3 kolom untuk tombol
@@ -59,7 +65,9 @@ class MyHomePage extends StatelessWidget {
                     mainAxisSpacing: 10,
                     crossAxisCount: 3,
                     shrinkWrap: true,
-                    children: items.map((item) => ItemCard(item)).toList(),
+                    children: items.map((ItemHomepage item) {
+                      return ItemCard(item);
+                    }).toList(),
                   ),
                 ],
               ),
@@ -75,19 +83,26 @@ class MyHomePage extends StatelessWidget {
 class InfoCard extends StatelessWidget {
   final String title;
   final String content;
+
   const InfoCard({super.key, required this.title, required this.content});
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 2,
+      // Membuat kotak kartu dengan bayangan dibawahnya.
+      elevation: 2.0,
       child: Container(
-        width: MediaQuery.of(context).size.width / 3.5,
-        padding: const EdgeInsets.all(16),
+        // Mengatur ukuran dan jarak di dalam kartu.
+        width: MediaQuery.of(context).size.width / 3.5, // menyesuaikan dengan lebar device yang digunakan.
+        padding: const EdgeInsets.all(16.0),
+        // Menyusun title dan content secara vertikal.
         child: Column(
           children: [
-            Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
-            const SizedBox(height: 8),
+            Text(
+              title,
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 8.0),
             Text(content),
           ],
         ),
@@ -100,6 +115,7 @@ class InfoCard extends StatelessWidget {
 class ItemHomepage {
   final String name;
   final IconData icon;
+
   ItemHomepage(this.name, this.icon);
 }
 
@@ -127,8 +143,12 @@ class ItemCard extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(item.icon, color: Colors.white, size: 30),
-                const SizedBox(height: 3),
+                Icon(
+                    item.icon,
+                    color: Colors.white,
+                    size: 30
+                ),
+                const Padding(padding: EdgeInsets.all(3)),
                 Text(
                   item.name,
                   textAlign: TextAlign.center,
